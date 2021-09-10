@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request
 
 
 class Product:
@@ -31,4 +31,10 @@ app = Flask(__name__)
 @app.route("/")
 def whatever():
     value = 5
-    return f"<p>Test = {5}</p>"
+    return f"<p>Test = {value}</p>"
+
+
+@app.route('/post_test/', methods=['POST'])
+def post_test():
+    content = request.get_json()
+    print(content)
